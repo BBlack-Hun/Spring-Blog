@@ -3,11 +3,12 @@ spring:
     active: local
 
 
---- local
+--- #local ??R
 spring:
+  profiles: local
   data:
-    mongo:
-      url: mongodb+srv://admin:1q2w3e4r!@cluster0.kjzqz.mongodb.net/SBlog?retryWrites=true&w=majority
+    mongodb:
+      uri: mongodb+srv://admin:1q2w3e4r!@cluster0.kjzqz.mongodb.net/SBlog?retryWrites=true&w=majority
 
 logging: # ROOT?? ?? ?? ?? ??
   level:
