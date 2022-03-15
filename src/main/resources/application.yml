@@ -1,0 +1,14 @@
+spring:
+  profiles:
+    active: local
+
+
+--- local
+spring:
+  data:
+    mongo:
+      url: mongodb+srv://admin:1q2w3e4r!@cluster0.kjzqz.mongodb.net/SBlog?retryWrites=true&w=majority
+
+logging: # ROOT?? ?? ?? ?? ??
+  level:
+    root: info
