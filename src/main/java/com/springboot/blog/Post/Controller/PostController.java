@@ -2,7 +2,7 @@ package com.springboot.blog.Post.Controller;
 
 
 import com.springboot.blog.Post.Service.PostService;
-import com.springboot.blog.Post.VO.ParamVO;
+import com.springboot.blog.Post.VO.PostVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,7 +15,7 @@ public class PostController {
 
 
     @PostMapping
-    public ResponseEntity<ParamVO> createPost(@RequestBody ParamVO paramVO) {
+    public ResponseEntity<PostVO> createPost(@RequestBody PostVO paramVO) {
         return postService.createPost(paramVO);
     }
 
