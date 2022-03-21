@@ -15,13 +15,15 @@ public class BlogApplication {
         SpringApplication.run(BlogApplication.class, args);
     }
 
-    @Bean
-    CommandLineRunner runner(PostRepository postRepository) {
-        return args ->{
-            PostVO postVO = new PostVO("title", "test", "test");
 
-            postRepository.insert(postVO);
-        };
-    }
+    // 최초 실행시킬때, 관리자 계정을 생성할때 아래의 bean을 이용하여 계정을 생성한다. -> MongoRepository 로는 제한되니, MongoTemplate을 같이 사용함.
+//    @Bean
+//    CommandLineRunner runner(PostRepository postRepository) {
+//        return args ->{
+//            PostVO postVO = new PostVO("title", "test", "test");
+//
+//            postRepository.insert(postVO);
+//        };
+//    }
 
 }
