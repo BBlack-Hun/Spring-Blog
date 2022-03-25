@@ -1,7 +1,7 @@
-package com.springboot.student.Service;
+package com.springboot.blog.student.Service;
 
-import com.springboot.student.Repository.StudentRepository;
-import com.springboot.student.Vo.StudnetVO;
+import com.springboot.blog.student.Repository.StudentRepository;
+import com.springboot.blog.student.Vo.StudnetVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

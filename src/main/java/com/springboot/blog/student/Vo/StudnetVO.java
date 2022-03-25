@@ -1,4 +1,4 @@
-package com.springboot.student.Vo;
+package com.springboot.blog.student.Vo;
 
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDateTime;
 
 @Data
-@Document(collation = "Student")
+@Document(collection = "student")
 public class StudnetVO {
 
     @Id
@@ -21,4 +21,16 @@ public class StudnetVO {
     private LocalDateTime createdAt = LocalDateTime.now();
     @LastModifiedDate
     private LocalDateTime updatedAt = LocalDateTime.now();
+
+    public StudnetVO() {
+
+    }
+
+    public StudnetVO(String firstName, String lastName, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
+
+
 }
