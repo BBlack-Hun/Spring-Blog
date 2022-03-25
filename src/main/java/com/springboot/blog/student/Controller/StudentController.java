@@ -1,6 +1,7 @@
-package com.springboot.student.Controller;
+package com.springboot.blog.student.Controller;
 
-import com.springboot.student.Service.StudentService;
+import com.springboot.blog.student.Service.StudentService;
+import com.springboot.blog.student.Vo.StudnetVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,17 @@ public class StudentController {
         model.addAttribute("students", studentService.getAllStudents());
 
         return "Student/students";
+    }
+
+    @GetMapping(value = "/students/new")
+    public String createStudentForm(Model model) {
+
+        // create student object to hold student form data
+        StudnetVO studnetVO = new StudnetVO();
+
+        model.addAttribute("student", studnetVO);
+        return "Student/create_student";
+
     }
 
 

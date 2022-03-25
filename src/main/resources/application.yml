@@ -12,6 +12,14 @@ spring:
         uri: mongodb://139.177.200.169:27117/Student
 
 
+  thymeleaf:
+    cache: false
+    prefix: file:src/main/resources/templates/
+
+  devtools:
+    restart:
+      enabled: true
+
 logging: # ROOT?? ?? ?? ?? ??
   level:
     root: info

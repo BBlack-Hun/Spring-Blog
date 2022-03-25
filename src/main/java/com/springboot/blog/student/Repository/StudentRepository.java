@@ -1,6 +1,6 @@
-package com.springboot.student.Repository;
+package com.springboot.blog.student.Repository;
 
-import com.springboot.student.Vo.StudnetVO;
+import com.springboot.blog.student.Vo.StudnetVO;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
