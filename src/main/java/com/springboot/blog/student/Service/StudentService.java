@@ -17,4 +17,8 @@ public class StudentService {
         return studentRepository.findAll();
     }
 
+    public StudnetVO saveStudent(StudnetVO studnetVO) {
+        return studentRepository.save(studnetVO);
+    }
+
 }
