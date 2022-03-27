@@ -21,4 +21,16 @@ public class StudentService {
         return studentRepository.save(studnetVO);
     }
 
+    public StudnetVO getOneStudent(String id) {
+        return studentRepository.findById(id).get();
+    }
+
+    public StudnetVO updateStudent(StudnetVO studnetVO) {
+        return studentRepository.save(studnetVO);
+    }
+
+    public void deleteStudent(String id) {
+        studentRepository.deleteById(id);
+    }
+
 }
