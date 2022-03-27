@@ -5,10 +5,7 @@ import com.springboot.blog.student.Vo.StudnetVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -39,7 +36,29 @@ public class StudentController {
     public String saveStudent(@ModelAttribute("student") StudnetVO studnetVO) {
         studentService.saveStudent(studnetVO);
 
-        return "redirect: Student/students";
+        return "redirect:/students";
+    }
+
+    @GetMapping(value = "/students/edit/{id}")
+    public String editStudentForm(@PathVariable String id, Model model) {
+        model.addAttribute("student", studentService.getOneStudent(id));
+
+        return "Student/edit_student";
+    }
+
+    @PostMapping(value = "/students/{id}")
+    public String updateStudent(@PathVariable String id, @ModelAttribute("student") StudnetVO studnetVO, Model model) {
+        // get Student from database by id
+        StudnetVO existingStudent = studentService.getOneStudent(id);
+        existingStudent.setId(id);
+        existingStudent.setFirstName(studnetVO.getFirstName());
+        existingStudent.setLastName(studnetVO.getLastName());
+        existingStudent.setEmail(studnetVO.getEmail());
+
+        // save updated Student object
+        studentService.updateStudent(existingStudent);
+        return "redirect:/students";
+
     }
 
 
