@@ -61,5 +61,12 @@ public class StudentController {
 
     }
 
+    // handler method to handle delete student requrest
+    @GetMapping("/students/{id}")
+    public String deleteStudent(@PathVariable String id) {
+        studentService.deleteStudent(id);
+        return "redirect:/students";
+    }
+
 
 }

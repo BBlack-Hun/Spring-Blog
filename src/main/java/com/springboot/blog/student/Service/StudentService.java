@@ -29,4 +29,8 @@ public class StudentService {
         return studentRepository.save(studnetVO);
     }
 
+    public void deleteStudent(String id) {
+        studentRepository.deleteById(id);
+    }
+
 }
