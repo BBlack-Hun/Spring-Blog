@@ -11,4 +11,8 @@ public class RoleVo {
     @Id
     private String id;
     private String name;
+
+    public RoleVo(String name) {
+        this.name = name;
+    }
 }
