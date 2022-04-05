@@ -30,4 +30,12 @@ public class UserVo {
     @LastModifiedDate
     private LocalDateTime updatedAt = LocalDateTime.now();
 
+    public UserVo(){}
+
+    public UserVo(String firstName, String lastName, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
+
 }
