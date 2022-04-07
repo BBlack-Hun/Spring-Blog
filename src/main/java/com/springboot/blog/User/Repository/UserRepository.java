@@ -1,9 +1,17 @@
 package com.springboot.blog.User.Repository;
 
-import com.springboot.blog.User.VO.UserVo;
+import com.springboot.blog.User.Vo.UserVO;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
 
 @Repository
-public interface UserRepository extends MongoRepository<UserVo, String> {
+@Transactional(readOnly = true)
+public interface UserRepository extends MongoRepository<UserVO, String> {
+
+    Optional<UserVO> findByEmail(String email);
+
+
 }
