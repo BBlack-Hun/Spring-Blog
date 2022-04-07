@@ -33,11 +33,12 @@ public class UserVO implements UserDetails {
     @LastModifiedDate
     private LocalDateTime updatedAt = LocalDateTime.now();
 
-    public UserVO(String username, String nickname, String email, String password) {
+    public UserVO(String username, String nickname, String email, String password, UserRoleVO userRole) {
         this.username = username;
         this.nickname = nickname;
         this.email = email;
         this.password = password;
+        this.userRole = userRole;
     }
 
     @Override
