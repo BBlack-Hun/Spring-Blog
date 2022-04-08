@@ -2,12 +2,13 @@ package com.springboot.blog.User.Controller;
 
 import com.springboot.blog.User.Service.UserService;
 import com.springboot.blog.User.Vo.UserRoleVO;
+import com.springboot.blog.User.Vo.UserTokenVO;
 import com.springboot.blog.User.Vo.UserVO;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
 
 @RestController
 @RequiredArgsConstructor
@@ -30,6 +31,30 @@ public class UesrController {
                 userVO.getPassword(),
                 UserRoleVO.USER
         ));
+    }
+
+    @GetMapping(path="confirm")
+    public String confirmToken(@RequestParam("token") String token) {
+        UserTokenVO userToken = userService
+                .getToken(token)
+                .orElseThrow(()-> new IllegalStateException("token not found"));
+
+        if (userToken.getConfirmedAt() != null) {
+            throw new IllegalStateException("email already confirmed");
+        }
+
+        LocalDateTime expiredAt = userToken.getExpiredAt();
+
+        if (expiredAt.isBefore(LocalDateTime.now())) {
+            throw new IllegalStateException("token expired");
+        }
+
+        userService.setConfirmedAt(token);
+        userService.enableUser(
+            userToken.getUserVO().getEmail()
+        );
+
+        return "confirmed";
     }
 
 

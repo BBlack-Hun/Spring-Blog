@@ -77,6 +77,14 @@ public class UserServiceImpl implements UserService, UserDetailsService, Predica
         return "is Work";
     }
 
+    public void enableUser(String email) {
+        UserVO user = userRepository.findByEmail(email).orElseThrow(()-> new IllegalStateException("email not found"));
+
+        user.setEnabled(Boolean.TRUE);
+
+        userRepository.save(user);
+    }
+
     @Override
     public void saveToken(UserTokenVO userTokenVO) {
         tokenRepository.save(userTokenVO);
@@ -89,10 +97,15 @@ public class UserServiceImpl implements UserService, UserDetailsService, Predica
     }
 
     @Override
-    public int setConfirmedAt(String token) {
-        return tokenRepository.updateConfirmedAt(
-                token, LocalDateTime.now()
-        );
+    public void setConfirmedAt(String token) {
+
+        UserTokenVO userTokenVO = tokenRepository.findByToken(token).orElseThrow(()-> new IllegalStateException("token not found"));
+
+        System.out.println(userTokenVO);
+
+        userTokenVO.setConfirmedAt(LocalDateTime.now());
+
+        tokenRepository.save(userTokenVO);
     }
 
 

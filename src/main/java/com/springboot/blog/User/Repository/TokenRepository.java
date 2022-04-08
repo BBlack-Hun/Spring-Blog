@@ -11,6 +11,4 @@ import java.util.Optional;
 public interface TokenRepository extends MongoRepository<UserTokenVO, String> {
 
     Optional<UserTokenVO> findByToken(String token);
-
-    int updateConfirmedAt(String token, LocalDateTime confirmedAt);
 }
