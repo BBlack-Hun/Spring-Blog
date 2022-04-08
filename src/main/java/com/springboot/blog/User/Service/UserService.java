@@ -24,5 +24,7 @@ public interface UserService extends UserDetailsService {
 
     Optional<UserTokenVO> getToken(String token);
 
-    int setConfirmedAt(String token);
+    void setConfirmedAt(String token);
+
+    void enableUser(String email);
 }
