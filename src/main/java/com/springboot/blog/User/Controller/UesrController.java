@@ -6,10 +6,7 @@ import com.springboot.blog.User.Vo.UserTokenVO;
 import com.springboot.blog.User.Vo.UserVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 
@@ -36,8 +33,8 @@ public class UesrController {
         ));
     }
 
-    @Transactional
-    public String confirmToken(String token) {
+    @GetMapping(path="confirm")
+    public String confirmToken(@RequestParam("token") String token) {
         UserTokenVO userToken = userService
                 .getToken(token)
                 .orElseThrow(()-> new IllegalStateException("token not found"));
